@@ -9,15 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraduationThesis.Data", "Gr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraduationThesis.Application", "GraduationThesis.Application\GraduationThesis.Application.csproj", "{8F9F1CD7-E9FF-4C46-83C0-8A0BF6AF13EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraduationThesis.Data.EF", "GraduationThesis.Data.EF\GraduationThesis.Data.EF.csproj", "{2A75DC24-1F59-42EF-ADCA-612B1FD3191B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraduationThesis.Utilities", "GraduationThesis.Utilities\GraduationThesis.Utilities.csproj", "{4ED7A6D4-F5AD-4721-B248-628EE632C03C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraduationThesis.Utilities", "GraduationThesis.Utilities\GraduationThesis.Utilities.csproj", "{4ED7A6D4-F5AD-4721-B248-628EE632C03C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraduationThesis.ApiIntegration", "GraduationThesis.ApiIntegration\GraduationThesis.ApiIntegration.csproj", "{259A81DA-5EAB-40CC-8CDA-CAA742B819B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraduationThesis.ApiIntegration", "GraduationThesis.ApiIntegration\GraduationThesis.ApiIntegration.csproj", "{259A81DA-5EAB-40CC-8CDA-CAA742B819B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraduationThesis.BackendApi", "GraduationThesis.BackendApi\GraduationThesis.BackendApi.csproj", "{A32902B3-58B1-461D-B1A6-8A6231F54CD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraduationThesis.BackendApi", "GraduationThesis.BackendApi\GraduationThesis.BackendApi.csproj", "{A32902B3-58B1-461D-B1A6-8A6231F54CD6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraduationThesis.AdminApp", "GraduationThesis.AdminApp\GraduationThesis.AdminApp.csproj", "{668D52C2-6ADA-426E-B62F-245B6C7C204D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraduationThesis.AdminApp", "GraduationThesis.AdminApp\GraduationThesis.AdminApp.csproj", "{668D52C2-6ADA-426E-B62F-245B6C7C204D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Presentation", "1.Presentation", "{8F944E90-4A01-4039-91FC-CC7EB389B5F7}"
 EndProject
@@ -47,10 +45,6 @@ Global
 		{8F9F1CD7-E9FF-4C46-83C0-8A0BF6AF13EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F9F1CD7-E9FF-4C46-83C0-8A0BF6AF13EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F9F1CD7-E9FF-4C46-83C0-8A0BF6AF13EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A75DC24-1F59-42EF-ADCA-612B1FD3191B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A75DC24-1F59-42EF-ADCA-612B1FD3191B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A75DC24-1F59-42EF-ADCA-612B1FD3191B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A75DC24-1F59-42EF-ADCA-612B1FD3191B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4ED7A6D4-F5AD-4721-B248-628EE632C03C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4ED7A6D4-F5AD-4721-B248-628EE632C03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ED7A6D4-F5AD-4721-B248-628EE632C03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,7 +69,6 @@ Global
 		{FA4D96CB-C0FE-4B97-B2DA-109DB6B65729} = {8F944E90-4A01-4039-91FC-CC7EB389B5F7}
 		{2CE9CBA7-6109-46F8-A856-A589874D8A2F} = {093CFF9B-2049-463F-802C-5E2EF0B639EE}
 		{8F9F1CD7-E9FF-4C46-83C0-8A0BF6AF13EE} = {439F6050-AC9D-4857-B9DD-17498E5093C7}
-		{2A75DC24-1F59-42EF-ADCA-612B1FD3191B} = {093CFF9B-2049-463F-802C-5E2EF0B639EE}
 		{4ED7A6D4-F5AD-4721-B248-628EE632C03C} = {6353B6A8-DA6F-43C9-8E6C-5F1BEBA3986D}
 		{259A81DA-5EAB-40CC-8CDA-CAA742B819B6} = {C7B13C98-097F-4614-9467-3FFFA4CD0056}
 		{A32902B3-58B1-461D-B1A6-8A6231F54CD6} = {C7B13C98-097F-4614-9467-3FFFA4CD0056}

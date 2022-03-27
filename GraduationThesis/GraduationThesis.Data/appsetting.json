@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "GraduationThesisDB": "Server=HUYNHANH\\SQLEXPRESS;Database=GraduationThesis;Trusted_Connection=True;"
+  }
+}
