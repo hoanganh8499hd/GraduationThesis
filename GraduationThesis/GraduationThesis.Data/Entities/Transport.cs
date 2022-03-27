@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraduationThesis.Data.Entities
 {
-    internal class Transport
+    public class Transport
     {
         public int id { get; set; }
         public int order_id { get; set; }

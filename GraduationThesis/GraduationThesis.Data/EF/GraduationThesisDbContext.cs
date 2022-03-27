@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace GraduationThesis.Data.EF
 {
-    internal class GraduationThesisDbContext : DbContext
+    public class GraduationThesisDbContext : DbContext
     {
         public GraduationThesisDbContext(DbContextOptions options) : base(options)
         {

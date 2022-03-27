@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraduationThesis.Data.Entities
 {
-    internal class Brand
+    public class Brand
     {
         public int id { get; set; }
         public string brand_name { get; set; }

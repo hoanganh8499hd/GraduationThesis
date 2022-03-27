@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraduationThesis.Data.Entities
 {
-    internal class Category
+    public class Category
     {
         public int id { get; set; }
         public string cate_name { get; set; }
