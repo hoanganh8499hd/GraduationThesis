@@ -34,7 +34,7 @@ namespace GraduationThesis.Data.Infrastructure
 
         public IEnumerable<T> GetAll()
         {
-            return _context.Set<T>().ToList();
+            return _context.Set<T>().AsEnumerable();
         }
 
         public T GetById(int id)

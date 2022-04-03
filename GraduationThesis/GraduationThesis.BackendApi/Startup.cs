@@ -1,7 +1,9 @@
+using GraduationThesis.Application.AutoMapper;
 using GraduationThesis.Application.Implementation;
 using GraduationThesis.Application.Interfaces;
 using GraduationThesis.Data.EF;
 using GraduationThesis.Data.Infrastructure;
+using GraduationThesis.Data.Repository.CategoryRepo;
 using GraduationThesis.Data.Repository.ProductRepo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +37,8 @@ namespace GraduationThesis.BackendApi
             services.AddDbContext<GraduationThesisDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("GraduationThesisDB")));
 
+
+            services.AddSingleton(AutoMapperConfig.RegisterMappings().CreateMapper());
             services.AddControllers();
 
             services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork));
@@ -43,9 +47,11 @@ namespace GraduationThesis.BackendApi
 
             //services.AddTransient<IProductService, ProductService>();
             //services.AddTransient<IProductRepository, ProductRepository>();            
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IProductRepository, ProductRepository>();
+            //services.AddScoped<IProductService, ProductService>();
+            //services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
 
+            services.AddTransient<ICategoryService, CategoryService>();
 
             services.AddSwaggerGen(c =>
             {
