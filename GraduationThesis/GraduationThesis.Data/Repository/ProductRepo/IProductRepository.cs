@@ -10,6 +10,5 @@ namespace GraduationThesis.Data.Repository.ProductRepo
 {
     public interface IProductRepository : IRepository<Product>
     {
-        public Product GetProductById(int id);
     }
 }

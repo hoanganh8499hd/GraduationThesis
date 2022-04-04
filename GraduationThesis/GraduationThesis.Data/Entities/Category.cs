@@ -8,8 +8,9 @@ namespace GraduationThesis.Data.Entities
 {
     public class Category
     {
-        public Category(string cate_name, string cate_slug, DateTime create_at, DateTime? update_at, DateTime? delete_at, bool isActive, bool isDelete, int? parent_id)
+        public Category(int id ,string cate_name, string cate_slug, DateTime create_at, DateTime? update_at, DateTime? delete_at, bool isActive, bool isDelete, int? parent_id)
         {
+            this.id = id;
             this.cate_name = cate_name;
             this.cate_slug = cate_slug;
             this.create_at = create_at;

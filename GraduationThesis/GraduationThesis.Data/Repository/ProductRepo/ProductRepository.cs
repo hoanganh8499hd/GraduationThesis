@@ -14,10 +14,5 @@ namespace GraduationThesis.Data.Repository.ProductRepo
         public ProductRepository(GraduationThesisDbContext context) : base(context)
         {
         }
-
-        public Product GetProductById(int id)
-        {
-            return GetAll().FirstOrDefault(x => x.id == id);
-        }
     }
 }

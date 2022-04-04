@@ -16,6 +16,10 @@ namespace GraduationThesis.Application.Interfaces
 
         CategoryViewModel GetCategoryById(int id);
 
+        void Delete(int id);
+
+        void Update(CategoryViewModel categoryViewModel);
+
         void Save();
     }
 }

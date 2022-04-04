@@ -14,6 +14,7 @@ namespace GraduationThesis.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Category, CategoryViewModel>();
+            CreateMap<Product, ProductViewModel>();
         }
     }
 }

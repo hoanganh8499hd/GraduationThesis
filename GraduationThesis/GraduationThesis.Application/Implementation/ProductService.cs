@@ -1,7 +1,9 @@
-﻿using GraduationThesis.Application.Interfaces;
+﻿using AutoMapper;
+using GraduationThesis.Application.Interfaces;
 using GraduationThesis.Data.Entities;
 using GraduationThesis.Data.Infrastructure;
 using GraduationThesis.Data.Repository.ProductRepo;
+using GraduationThesis.Utilities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,27 +17,46 @@ namespace GraduationThesis.Application.Implementation
 
         private IProductRepository _productRepository;
         private IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public ProductService(IProductRepository productRepository, IUnitOfWork unitOfWork)
+        public ProductService(IProductRepository productRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
-            this._productRepository = productRepository;
-            this._unitOfWork = unitOfWork;
+            _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public Product Add(Product product)
+        public ProductViewModel Add(ProductViewModel productViewModel)
         {
+            var product = _mapper.Map<ProductViewModel, Product>(productViewModel);
             _productRepository.Add(product);
+            return productViewModel;
+        }
+
+        public List<ProductViewModel> GetAllProduct()
+        {
+            return _mapper.ProjectTo<ProductViewModel>(_productRepository.GetAll().AsQueryable()).ToList();
+        }
+
+        public ProductViewModel GetProductById(int id)
+        {
+            var product = _mapper.Map<Product, ProductViewModel>(_productRepository.GetById(id));
             return product;
         }
 
-        public List<Product> GetAll()
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var product = _productRepository.GetById(id);
+            if (product != null)
+            {
+                _productRepository.Remove(product);
+            }
         }
 
-        public Product GetById(int id)
+        public void Update(ProductViewModel productViewModel)
         {
-            throw new NotImplementedException();
+            var product = _mapper.Map<ProductViewModel, Product>(productViewModel);
+            _productRepository.Update(product);
         }
 
         public void Save()

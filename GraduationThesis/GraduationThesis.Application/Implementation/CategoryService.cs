@@ -28,14 +28,14 @@ namespace GraduationThesis.Application.Implementation
 
         public CategoryViewModel Add(CategoryViewModel categoryViewModel)
         {
-            var category = _mapper.Map<CategoryViewModel,Category>(categoryViewModel);
+            var category = _mapper.Map<CategoryViewModel, Category>(categoryViewModel);
             _categoryRepository.Add(category);
             return categoryViewModel;
         }
 
         public List<CategoryViewModel> GetAllCategory()
         {
-             return _mapper.ProjectTo<CategoryViewModel>(_categoryRepository.GetAll().AsQueryable()).ToList();
+            return _mapper.ProjectTo<CategoryViewModel>(_categoryRepository.GetAll().AsQueryable()).ToList();
         }
 
         public CategoryViewModel GetCategoryById(int id)
@@ -44,9 +44,24 @@ namespace GraduationThesis.Application.Implementation
             return category;
         }
 
+        public void Delete(int id)
+        {
+            var category = _categoryRepository.GetById(id);
+            if (category != null)
+            {
+                _categoryRepository.Remove(category);
+            }
+        }
+
+        public void Update(CategoryViewModel categoryViewModel)
+        {
+            var category = _mapper.Map<CategoryViewModel, Category>(categoryViewModel);
+            _categoryRepository.Update(category);
+        }
+
         public void Save()
         {
-           _unitOfWork.Commit();
+            _unitOfWork.Commit();
         }
     }
 }

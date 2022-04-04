@@ -8,6 +8,7 @@ namespace GraduationThesis.Utilities.ViewModels
 {
     public class CategoryViewModel
     {
+        public int id { get; set; }
         public string cate_name { get; set; }
         public string cate_slug { get; set; }
         public int? parent_id { get; set; }

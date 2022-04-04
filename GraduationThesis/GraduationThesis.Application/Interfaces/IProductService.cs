@@ -1,4 +1,5 @@
 ﻿using GraduationThesis.Data.Entities;
+using GraduationThesis.Utilities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,15 @@ namespace GraduationThesis.Application.Interfaces
 {
     public interface IProductService
     {
-        public List<Product> GetAll();
+        public List<ProductViewModel> GetAllProduct();
 
-        Product Add(Product product);
+        ProductViewModel Add(ProductViewModel productViewModel);
 
-        Product GetById(int id);
+        ProductViewModel GetProductById(int id);
+
+        void Delete(int id);
+
+        void Update(ProductViewModel productViewModel);
 
         void Save();
     }

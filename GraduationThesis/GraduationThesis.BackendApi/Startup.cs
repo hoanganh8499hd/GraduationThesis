@@ -49,9 +49,12 @@ namespace GraduationThesis.BackendApi
             //services.AddTransient<IProductRepository, ProductRepository>();            
             //services.AddScoped<IProductService, ProductService>();
             //services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
 
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IProductService, ProductService>();
 
             services.AddSwaggerGen(c =>
             {

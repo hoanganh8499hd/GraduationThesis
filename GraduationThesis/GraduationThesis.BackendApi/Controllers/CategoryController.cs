@@ -1,6 +1,9 @@
 ﻿using GraduationThesis.Application.Interfaces;
 using GraduationThesis.Utilities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GraduationThesis.BackendApi.Controllers
 {
@@ -8,7 +11,8 @@ namespace GraduationThesis.BackendApi.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        ICategoryService _categoryService;
+        private readonly ICategoryService _categoryService;
+
         public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
@@ -26,13 +30,46 @@ namespace GraduationThesis.BackendApi.Controllers
             var model = _categoryService.GetCategoryById(id);
             return new OkObjectResult(model);
         }
-        
+
         [HttpPost]
         public IActionResult Create([FromBody] CategoryViewModel categoryViewModel)
         {
-            var productVm =  _categoryService.Add(categoryViewModel);
+            var productVm = _categoryService.Add(categoryViewModel);
             _categoryService.Save();
             return new OkObjectResult(productVm);
         }
+
+        [HttpPut]
+        public IActionResult Update([FromBody] CategoryViewModel categoryViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                _categoryService.Update(categoryViewModel);
+                _categoryService.Save();
+            }
+            return new OkObjectResult(categoryViewModel);
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+            else
+            {
+                _categoryService.Delete(id);
+                _categoryService.Save();
+                return new OkObjectResult(id);
+            }
+        }
+
+
     }
 }

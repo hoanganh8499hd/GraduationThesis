@@ -1,8 +1,11 @@
 ﻿using GraduationThesis.Application.Implementation;
 using GraduationThesis.Application.Interfaces;
-using GraduationThesis.Data.Entities;
+using GraduationThesis.Utilities.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GraduationThesis.BackendApi.Controllers
 {
@@ -10,18 +13,63 @@ namespace GraduationThesis.BackendApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        IProductService _productService;
-        public ProductController(ProductService productService)
+        private readonly IProductService _productService;
+
+        public ProductController(IProductService productService)
         {
             _productService = productService;
         }
-        // GET: api/values
-        [HttpPost]
-        public IActionResult Add(Product product)
+
+        [HttpGet("GetAll")]
+        public IActionResult GetAllProduct()
         {
-            _productService.Add(product);
+            return new OkObjectResult(_productService.GetAllProduct());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetProductById(int id)
+        {
+            var model = _productService.GetProductById(id);
+            return new OkObjectResult(model);
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] ProductViewModel productViewModel)
+        {
+            var productVm = _productService.Add(productViewModel);
             _productService.Save();
-            return new OkObjectResult(product);
+            return new OkObjectResult(productVm);
+        }
+
+        [HttpPut]
+        public IActionResult Update([FromBody] ProductViewModel productViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                _productService.Update(productViewModel);
+                _productService.Save();
+            }
+            return new OkObjectResult(productViewModel);
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+            else
+            {
+                _productService.Delete(id);
+                _productService.Save();
+                return Ok();
+            }
         }
     }
 }
