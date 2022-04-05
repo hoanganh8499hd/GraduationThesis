@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraduationThesis.Data.Entities
 {
-    internal class PaymentMethod
+    public class PaymentMethod
     {
         public int id { get; set; }
         public string name { get; set; }
